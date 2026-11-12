@@ -6,3 +6,4 @@
 {"timestamp":"00:00:57.905","source":"Server","level":"LOG","message":"✓ Compiled in 346ms"}
 {"timestamp":"00:01:30.884","source":"Server","level":"LOG","message":"✓ Compiled in 450ms"}
 {"timestamp":"00:01:48.136","source":"Server","level":"LOG","message":"✓ Compiled in 450ms"}
+{"timestamp":"00:03:57.829","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
