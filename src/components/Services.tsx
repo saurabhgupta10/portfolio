@@ -1,21 +1,42 @@
 import React from "react";
-import { SERVICES_DATA } from "@/data/portfolioData";
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import { 
+  Globe, 
+  LayoutDashboard, 
+  Layers, 
+  Database, 
+  Workflow, 
+  Wrench, 
+  CheckCircle2, 
+  ArrowRight 
+} from "lucide-react";
 import Link from "next/link";
+import { SERVICES_DATA } from "@/data/portfolioData";
 
 export default function Services() {
+  const serviceIcons = [
+    <Layers key="0" className="w-6 h-6 text-[#244C3B]" />,
+    <Globe key="1" className="w-6 h-6 text-[#244C3B]" />,
+    <LayoutDashboard key="2" className="w-6 h-6 text-[#244C3B]" />,
+    <LayoutDashboard key="3" className="w-6 h-6 text-[#244C3B]" />,
+    <Workflow key="4" className="w-6 h-6 text-[#244C3B]" />,
+    <Database key="5" className="w-6 h-6 text-[#244C3B]" />,
+    <Workflow key="6" className="w-6 h-6 text-[#244C3B]" />,
+    <Wrench key="7" className="w-6 h-6 text-[#244C3B]" />
+  ];
+
   return (
-    <section id="services" className="py-20 border-t border-slate-200 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-950/50">
+    <section id="services" className="py-24 border-t border-[#E8E2D2] bg-[#F1EBDD]/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="max-w-3xl mb-16">
-          <h2 className="text-xs uppercase tracking-widest text-indigo-600 dark:text-indigo-400 font-semibold mb-2">
+          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#C46B4F] font-bold mb-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#C46B4F]"></span>
             Services & Solutions
-          </h2>
-          <p className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
+          </div>
+          <p className="text-3xl sm:text-4xl font-serif font-bold text-[#244C3B] tracking-tight">
             High-impact software engineering tailored to your business needs.
           </p>
-          <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          <p className="mt-3 text-sm sm:text-base text-[#606860]">
             Clear deliverables, transparent timelines, and maintainable architecture for startups and established enterprises.
           </p>
         </div>
@@ -24,27 +45,33 @@ export default function Services() {
           {SERVICES_DATA.map((srv, idx) => (
             <div
               key={idx}
-              className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 shadow-sm hover:border-indigo-500/40 transition-all flex flex-col justify-between"
+              className="p-6 rounded-2xl border border-[#DFD7C2] bg-white shadow-sm hover:shadow-md hover:border-[#244C3B]/50 transition-all flex flex-col justify-between"
             >
               <div>
-                <span className="text-xs font-mono text-indigo-600 dark:text-indigo-400 font-bold mb-2 block">
-                  0{idx + 1}
-                </span>
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="p-3 rounded-xl bg-[#F1EBDD] border border-[#DFD7C2]">
+                    {serviceIcons[idx] || <Layers className="w-6 h-6 text-[#244C3B]" />}
+                  </div>
+                  <span className="text-xs font-mono text-[#C46B4F] font-bold">
+                    0{idx + 1}
+                  </span>
+                </div>
+
+                <h3 className="text-lg font-bold text-[#244C3B] mb-2 font-serif">
                   {srv.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                <p className="text-xs sm:text-sm text-[#606860] leading-relaxed mb-6">
                   {srv.description}
                 </p>
 
-                <div className="space-y-2 border-t border-slate-100 dark:border-slate-800/80 pt-4">
-                  <span className="text-[11px] font-semibold text-slate-800 dark:text-slate-200 uppercase tracking-wider block">
+                <div className="space-y-2 border-t border-[#E8E2D2] pt-4">
+                  <span className="text-[11px] font-bold text-[#244C3B] uppercase tracking-wider block">
                     What You Receive:
                   </span>
-                  <ul className="space-y-1.5">
+                  <ul className="space-y-2">
                     {srv.deliverables.map((item, dIdx) => (
-                      <li key={dIdx} className="flex items-start gap-1.5 text-xs text-slate-600 dark:text-slate-400">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 mt-0.5 shrink-0" />
+                      <li key={dIdx} className="flex items-start gap-2 text-xs text-[#292D29]">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#244C3B] mt-0.5 shrink-0" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -52,13 +79,13 @@ export default function Services() {
                 </div>
               </div>
 
-              <div className="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800/80">
+              <div className="pt-6 mt-6 border-t border-[#E8E2D2]">
                 <Link
                   href="/#contact"
-                  className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 inline-flex items-center gap-1 group"
+                  className="text-xs font-bold text-[#244C3B] hover:text-[#C46B4F] inline-flex items-center gap-1.5 group transition-colors"
                 >
                   Request Service Quote
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-[#C46B4F]" />
                 </Link>
               </div>
             </div>

@@ -7,41 +7,41 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-12">
+    <footer className="border-t border-[#E8E2D2] bg-[#FAF8F2] py-14">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-100 dark:border-slate-800/80">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-10 border-b border-[#E8E2D2]">
           
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-indigo-600/10 border border-indigo-500/30 flex items-center justify-center text-indigo-500">
-              <Code2 className="w-4 h-4" />
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-[#244C3B] text-white flex items-center justify-center shadow-sm">
+              <Code2 className="w-5 h-5 text-[#C5A15B]" />
             </div>
             <div>
-              <span className="font-bold text-slate-900 dark:text-white text-base">
+              <span className="font-bold text-[#244C3B] text-base font-serif">
                 Saurabh Gupta
               </span>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
+              <p className="text-xs text-[#606860]">
                 Full-Stack Web Developer
               </p>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-6 text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium">
-            <Link href="/#about" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+          <div className="flex flex-wrap items-center justify-center gap-6 text-xs sm:text-sm text-[#292D29] font-medium">
+            <Link href="/#about" className="hover:text-[#244C3B] transition-colors">
               About
             </Link>
-            <Link href="/#skills" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+            <Link href="/#skills" className="hover:text-[#244C3B] transition-colors">
               Skills
             </Link>
-            <Link href="/#projects" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+            <Link href="/#projects" className="hover:text-[#244C3B] transition-colors">
               Projects
             </Link>
-            <Link href="/#services" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+            <Link href="/#services" className="hover:text-[#244C3B] transition-colors">
               Services
             </Link>
-            <Link href="/#why-me" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+            <Link href="/#why-me" className="hover:text-[#244C3B] transition-colors">
               Why Me
             </Link>
-            <Link href="/#contact" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+            <Link href="/#contact" className="hover:text-[#244C3B] transition-colors">
               Contact
             </Link>
           </div>
@@ -52,7 +52,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="p-2 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition-colors"
+              className="p-2.5 rounded-xl border border-[#DFD7C2] bg-white text-[#244C3B] hover:border-[#244C3B] transition-colors shadow-sm"
             >
               <GithubIcon className="w-4 h-4" />
             </a>
@@ -61,14 +61,14 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="p-2 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition-colors"
+              className="p-2.5 rounded-xl border border-[#DFD7C2] bg-white text-[#244C3B] hover:border-[#244C3B] transition-colors shadow-sm"
             >
               <LinkedinIcon className="w-4 h-4" />
             </a>
             <a
               href="mailto:saurabhgupta2792005@gmail.com"
               aria-label="Email"
-              className="p-2 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition-colors"
+              className="p-2.5 rounded-xl border border-[#DFD7C2] bg-white text-[#244C3B] hover:border-[#244C3B] transition-colors shadow-sm"
             >
               <Mail className="w-4 h-4" />
             </a>
@@ -76,7 +76,7 @@ export default function Footer() {
 
         </div>
 
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 dark:text-slate-500 gap-3">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#606860] gap-3">
           <p>&copy; {currentYear} Saurabh Gupta. All rights reserved.</p>
           <p>Engineered with Next.js, React, TypeScript & Tailwind CSS.</p>
         </div>

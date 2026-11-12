@@ -12,10 +12,11 @@ export interface Project {
   results?: string;
   architecture?: string[];
   githubUrl: string;
-  liveDemoUrl?: string; // Optional if no verified public deployment
+  liveDemoUrl?: string;
   isLive: boolean;
   featured: boolean;
   accentColor: string;
+  coverImage: string;
 }
 
 export const PROJECTS: Project[] = [
@@ -59,7 +60,8 @@ export const PROJECTS: Project[] = [
     liveDemoUrl: undefined,
     isLive: false,
     featured: true,
-    accentColor: "from-rose-500/20 to-orange-500/20"
+    accentColor: "from-rose-500/20 to-orange-500/20",
+    coverImage: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80"
   },
   {
     slug: "autonomous-ai-lead-engine",
@@ -103,7 +105,8 @@ export const PROJECTS: Project[] = [
     liveDemoUrl: undefined,
     isLive: false,
     featured: true,
-    accentColor: "from-blue-500/20 to-indigo-500/20"
+    accentColor: "from-blue-500/20 to-indigo-500/20",
+    coverImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
   }
 ];
 

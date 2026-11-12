@@ -2,11 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Sun, Moon, Menu, X, ArrowUpRight, Code2 } from "lucide-react";
+import { Menu, X, ArrowUpRight, Code2 } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -16,16 +15,6 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const toggleTheme = () => {
-    if (theme === "dark") {
-      document.documentElement.classList.remove("dark");
-      setTheme("light");
-    } else {
-      document.documentElement.classList.add("dark");
-      setTheme("dark");
-    }
-  };
 
   const navLinks = [
     { name: "About", href: "/#about" },
@@ -40,71 +29,57 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-slate-950/85 dark:bg-slate-950/90 bg-white/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm"
+          ? "bg-[#FAF8F2]/95 backdrop-blur-md border-b border-[#E8E2D2] shadow-[0_2px_15px_-3px_rgba(36,76,59,0.05)]"
           : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
+        <div className="flex items-center justify-between h-20">
+          
           {/* Logo / Brand */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-xl bg-indigo-600/10 border border-indigo-500/30 flex items-center justify-center text-indigo-500 group-hover:scale-105 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 shadow-sm">
-              <Code2 className="w-5 h-5" />
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 rounded-xl bg-[#244C3B] text-white flex items-center justify-center shadow-sm group-hover:bg-[#1c3d2f] transition-all">
+              <Code2 className="w-5 h-5 text-[#C5A15B]" />
             </div>
             <div className="flex flex-col">
-              <span className="font-bold text-lg text-slate-900 dark:text-white tracking-tight flex items-center gap-1.5">
+              <span className="font-bold text-lg text-[#244C3B] tracking-tight flex items-center gap-2">
                 Saurabh Gupta
-                <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
+                <span className="w-2 h-2 rounded-full bg-[#C46B4F] inline-block"></span>
               </span>
-              <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">Full-Stack Developer</span>
+              <span className="text-xs text-[#606860] font-medium tracking-wide">Full-Stack Web Developer</span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-1.5 bg-[#F1EBDD]/70 px-4 py-1.5 rounded-full border border-[#E8E2D2]">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 rounded-lg transition-colors"
+                className="px-3.5 py-1.5 text-sm font-medium text-[#292D29] hover:text-[#244C3B] hover:bg-[#FAF8F2] rounded-full transition-all duration-200"
               >
                 {link.name}
               </Link>
             ))}
           </nav>
 
-          {/* Right Action Buttons */}
+          {/* Right Action Button */}
           <div className="hidden md:flex items-center gap-3">
-            <button
-              onClick={toggleTheme}
-              aria-label="Toggle Theme"
-              className="p-2.5 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-            >
-              {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-            </button>
-
             <Link
               href="/#contact"
-              className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-xl bg-[#244C3B] hover:bg-[#1c3d2f] text-white shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
-              Hire Me
-              <ArrowUpRight className="w-4 h-4" />
+              Let&apos;s Work Together
+              <ArrowUpRight className="w-4 h-4 text-[#C5A15B]" />
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center gap-2">
             <button
-              onClick={toggleTheme}
-              aria-label="Toggle Theme"
-              className="p-2 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400"
-            >
-              {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-            </button>
-            <button
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle Menu"
-              className="p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              className="p-2 rounded-xl text-[#244C3B] hover:bg-[#F1EBDD] transition-colors border border-[#E8E2D2]"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -114,25 +89,25 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className="md:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 backdrop-blur-lg px-4 pt-2 pb-6 space-y-2">
+        <div className="md:hidden border-b border-[#E8E2D2] bg-[#FAF8F2]/98 backdrop-blur-lg px-5 pt-3 pb-6 space-y-2.5 shadow-lg">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/80"
+              className="block px-3.5 py-2.5 rounded-lg text-base font-medium text-[#292D29] hover:bg-[#F1EBDD] hover:text-[#244C3B]"
             >
               {link.name}
             </Link>
           ))}
-          <div className="pt-2">
+          <div className="pt-3">
             <Link
               href="/#contact"
               onClick={() => setIsOpen(false)}
-              className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium"
+              className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#244C3B] text-white font-medium shadow-sm"
             >
-              Hire Me
-              <ArrowUpRight className="w-4 h-4" />
+              Let&apos;s Work Together
+              <ArrowUpRight className="w-4 h-4 text-[#C5A15B]" />
             </Link>
           </div>
         </div>

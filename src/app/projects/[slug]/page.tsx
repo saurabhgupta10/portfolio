@@ -1,6 +1,7 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { PROJECTS } from "@/data/portfolioData";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -42,42 +43,51 @@ export default async function ProjectCaseStudyPage({
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col transition-colors duration-300">
+    <div className="min-h-screen bg-[#FAF8F2] text-[#292D29] flex flex-col transition-colors duration-300">
       <Navbar />
 
-      <main className="flex-1 pt-28 pb-20">
+      <main className="flex-1 pt-32 pb-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Back Navigation */}
           <div className="mb-8">
             <Link
               href="/#projects"
-              className="inline-flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-[#606860] hover:text-[#244C3B] transition-colors"
             >
-              <ArrowLeft className="w-4 h-4" />
+              <ArrowLeft className="w-4 h-4 text-[#C46B4F]" />
               Back to all projects
             </Link>
           </div>
 
-          {/* Header */}
-          <div className="space-y-4 pb-10 border-b border-slate-200 dark:border-slate-800">
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-500 border border-indigo-500/20">
+          {/* Editorial Cover Visual */}
+          <div className="relative h-72 sm:h-96 w-full rounded-3xl overflow-hidden mb-10 border border-[#DFD7C2] shadow-md">
+            <Image
+              src={project.coverImage}
+              alt={project.title}
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 1000px"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#244C3B]/85 via-[#244C3B]/20 to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6 text-white">
+              <span className="px-3.5 py-1 rounded-full text-xs font-bold bg-[#F1EBDD] text-[#244C3B] border border-[#DFD7C2] inline-block mb-2">
                 {project.category}
               </span>
-              <span className="text-xs text-slate-500 dark:text-slate-400">
-                Detailed Technical Case Study
-              </span>
+              <h1 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
+                {project.title}
+              </h1>
             </div>
+          </div>
 
-            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-              {project.title}
-            </h1>
-            <p className="text-lg sm:text-xl font-medium text-indigo-600 dark:text-indigo-400">
+          {/* Header */}
+          <div className="space-y-4 pb-12 border-b border-[#E8E2D2]">
+            <p className="text-lg sm:text-xl font-medium text-[#C46B4F]">
               {project.tagline}
             </p>
 
-            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed pt-2">
+            <p className="text-base sm:text-lg text-[#606860] leading-relaxed pt-2">
               {project.description}
             </p>
 
@@ -87,7 +97,7 @@ export default async function ProjectCaseStudyPage({
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 dark:bg-slate-800 text-white hover:bg-slate-800 dark:hover:bg-slate-700 text-sm font-medium transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#244C3B] text-white hover:bg-[#1c3d2f] text-sm font-semibold shadow-sm transition-all"
               >
                 <GithubIcon className="w-4 h-4" />
                 View GitHub Source
@@ -98,14 +108,14 @@ export default async function ProjectCaseStudyPage({
                   href={project.liveDemoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium transition-colors shadow-sm"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-[#DFD7C2] bg-white hover:bg-[#F1EBDD] text-[#244C3B] text-sm font-semibold transition-colors shadow-sm"
                 >
-                  <ExternalLink className="w-4 h-4" />
+                  <ExternalLink className="w-4 h-4 text-[#C46B4F]" />
                   Launch Live Application
                 </a>
               ) : (
-                <span className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium text-slate-500 bg-slate-100 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800">
-                  <span className="w-2 h-2 rounded-full bg-slate-400"></span>
+                <span className="inline-flex items-center gap-2 px-4 py-2.5 text-xs font-semibold text-[#606860] bg-[#F1EBDD] rounded-xl border border-[#DFD7C2]">
+                  <span className="w-2 h-2 rounded-full bg-[#C5A15B]"></span>
                   Verified Source Code Available
                 </span>
               )}
@@ -113,15 +123,15 @@ export default async function ProjectCaseStudyPage({
           </div>
 
           {/* Technology Badges */}
-          <div className="py-8 border-b border-slate-200 dark:border-slate-800">
-            <h2 className="text-xs uppercase font-mono text-slate-500 dark:text-slate-400 font-semibold mb-3">
+          <div className="py-8 border-b border-[#E8E2D2]">
+            <h2 className="text-xs uppercase font-mono text-[#244C3B] font-bold mb-3 tracking-wider">
               Technologies Used
             </h2>
             <div className="flex flex-wrap gap-2">
               {project.technologies.map((tech) => (
                 <span
                   key={tech}
-                  className="px-3 py-1.5 text-xs sm:text-sm font-mono rounded-lg bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-800"
+                  className="px-3 py-1.5 text-xs sm:text-sm font-mono rounded-lg bg-white text-[#244C3B] font-medium border border-[#DFD7C2] shadow-sm"
                 >
                   {tech}
                 </span>
@@ -130,41 +140,41 @@ export default async function ProjectCaseStudyPage({
           </div>
 
           {/* Problem & Solution Section */}
-          <div className="py-12 grid grid-cols-1 md:grid-cols-2 gap-8 border-b border-slate-200 dark:border-slate-800">
-            <div className="p-6 rounded-2xl border border-rose-500/20 bg-rose-500/5 dark:bg-rose-500/5">
-              <div className="flex items-center gap-2 text-rose-500 font-bold text-base mb-3">
-                <AlertCircle className="w-5 h-5" />
+          <div className="py-12 grid grid-cols-1 md:grid-cols-2 gap-8 border-b border-[#E8E2D2]">
+            <div className="p-7 rounded-2xl border border-[#DFD7C2] bg-white shadow-sm">
+              <div className="flex items-center gap-2 text-[#C46B4F] font-bold text-base mb-3 font-serif">
+                <AlertCircle className="w-5 h-5 text-[#C46B4F]" />
                 The Business Problem
               </div>
-              <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+              <p className="text-sm sm:text-base text-[#606860] leading-relaxed">
                 {project.problem}
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 dark:bg-emerald-500/5">
-              <div className="flex items-center gap-2 text-emerald-500 font-bold text-base mb-3">
-                <ShieldCheck className="w-5 h-5" />
+            <div className="p-7 rounded-2xl border border-[#DFD7C2] bg-[#F1EBDD]/60 shadow-sm">
+              <div className="flex items-center gap-2 text-[#244C3B] font-bold text-base mb-3 font-serif">
+                <ShieldCheck className="w-5 h-5 text-[#244C3B]" />
                 The Engineering Solution
               </div>
-              <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+              <p className="text-sm sm:text-base text-[#292D29] leading-relaxed">
                 {project.solution}
               </p>
             </div>
           </div>
 
           {/* Key Implemented Features */}
-          <div className="py-12 border-b border-slate-200 dark:border-slate-800">
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-6">
+          <div className="py-12 border-b border-[#E8E2D2]">
+            <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#244C3B] mb-6">
               Verified Implemented Features
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {project.keyFeatures.map((feat, idx) => (
                 <div
                   key={idx}
-                  className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 flex items-start gap-3"
+                  className="p-4 rounded-xl border border-[#DFD7C2] bg-white shadow-sm flex items-start gap-3"
                 >
-                  <CheckCircle2 className="w-5 h-5 text-indigo-500 shrink-0 mt-0.5" />
-                  <span className="text-sm sm:text-base text-slate-700 dark:text-slate-300 font-medium">
+                  <CheckCircle2 className="w-5 h-5 text-[#244C3B] shrink-0 mt-0.5" />
+                  <span className="text-sm sm:text-base text-[#292D29] font-medium">
                     {feat}
                   </span>
                 </div>
@@ -174,19 +184,19 @@ export default async function ProjectCaseStudyPage({
 
           {/* System Architecture */}
           {project.architecture && (
-            <div className="py-12 border-b border-slate-200 dark:border-slate-800">
-              <div className="flex items-center gap-2 text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-6">
-                <Layers className="w-6 h-6 text-indigo-500" />
+            <div className="py-12 border-b border-[#E8E2D2]">
+              <div className="flex items-center gap-2 text-xl sm:text-2xl font-serif font-bold text-[#244C3B] mb-6">
+                <Layers className="w-6 h-6 text-[#C46B4F]" />
                 System Architecture
               </div>
               <div className="space-y-3 font-mono text-xs sm:text-sm">
                 {project.architecture.map((layer, idx) => (
                   <div
                     key={idx}
-                    className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 flex items-center justify-between"
+                    className="p-4 rounded-xl border border-[#DFD7C2] bg-white shadow-sm flex items-center justify-between"
                   >
-                    <span className="text-indigo-500 font-bold">Step 0{idx + 1}</span>
-                    <span className="text-slate-700 dark:text-slate-200 text-right">{layer}</span>
+                    <span className="text-[#C46B4F] font-bold">Step 0{idx + 1}</span>
+                    <span className="text-[#244C3B] text-right font-medium">{layer}</span>
                   </div>
                 ))}
               </div>
@@ -194,12 +204,12 @@ export default async function ProjectCaseStudyPage({
           )}
 
           {/* Engineering Challenges */}
-          <div className="py-12 border-b border-slate-200 dark:border-slate-800">
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-4">
+          <div className="py-12 border-b border-[#E8E2D2]">
+            <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#244C3B] mb-4">
               Development Challenges & Solutions
             </h2>
-            <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
-              <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+            <div className="p-7 rounded-2xl border border-[#DFD7C2] bg-white shadow-sm">
+              <p className="text-sm sm:text-base text-[#606860] leading-relaxed">
                 {project.challenges}
               </p>
             </div>
@@ -207,12 +217,12 @@ export default async function ProjectCaseStudyPage({
 
           {/* Verified Results if present */}
           {project.results && (
-            <div className="py-12 border-b border-slate-200 dark:border-slate-800">
-              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-4">
+            <div className="py-12 border-b border-[#E8E2D2]">
+              <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#244C3B] mb-4">
                 Verified Results & Impact
               </h2>
-              <div className="p-6 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 dark:bg-emerald-500/5">
-                <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+              <div className="p-7 rounded-2xl border border-[#DFD7C2] bg-[#F1EBDD]/60 shadow-sm">
+                <p className="text-sm sm:text-base text-[#292D29] leading-relaxed">
                   {project.results}
                 </p>
               </div>
@@ -221,18 +231,18 @@ export default async function ProjectCaseStudyPage({
 
           {/* Next Steps / CTA */}
           <div className="pt-12 text-center space-y-4">
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
+            <h3 className="text-2xl font-serif font-bold text-[#244C3B]">
               Interested in building a similar solution for your business?
             </h3>
-            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
+            <p className="text-sm sm:text-base text-[#606860] max-w-xl mx-auto">
               I can help architect and deploy your web application with clean, reliable code.
             </p>
-            <div className="pt-2">
+            <div className="pt-3">
               <Link
                 href="/#contact"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-base shadow-lg shadow-indigo-600/25 transition-all"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#244C3B] hover:bg-[#1c3d2f] text-white font-semibold text-base shadow-sm transition-all"
               >
-                Let&apos;s Discuss Your Project
+                Let&apos;s Work Together
               </Link>
             </div>
           </div>

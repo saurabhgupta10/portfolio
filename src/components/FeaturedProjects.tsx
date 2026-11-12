@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { PROJECTS } from "@/data/portfolioData";
 import { ArrowUpRight, ExternalLink, Layers, CheckCircle } from "lucide-react";
 import { GithubIcon } from "@/components/SocialIcons";
@@ -17,30 +18,31 @@ export default function FeaturedProjects() {
       : PROJECTS.filter((p) => p.category === filter);
 
   return (
-    <section id="projects" className="py-20 border-t border-slate-200 dark:border-slate-800/80">
+    <section id="projects" className="py-24 border-t border-[#E8E2D2] bg-[#FAF8F2]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="max-w-2xl">
-            <h2 className="text-xs uppercase tracking-widest text-indigo-600 dark:text-indigo-400 font-semibold mb-2">
+            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#C46B4F] font-bold mb-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C46B4F]"></span>
               Featured Work
-            </h2>
-            <p className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
+            </div>
+            <p className="text-3xl sm:text-4xl font-serif font-bold text-[#244C3B] tracking-tight">
               Real projects engineered for performance and utility.
             </p>
           </div>
 
           {/* Filter Pills */}
-          <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-900 p-1.5 rounded-xl border border-slate-200 dark:border-slate-800 self-start md:self-auto">
+          <div className="flex items-center gap-1.5 bg-[#F1EBDD] p-1.5 rounded-full border border-[#DFD7C2] self-start md:self-auto">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`px-4 py-1.5 text-xs sm:text-sm font-medium rounded-lg transition-all ${
+                className={`px-4 py-1.5 text-xs sm:text-sm font-semibold rounded-full transition-all ${
                   filter === cat
-                    ? "bg-indigo-600 text-white shadow-sm"
-                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                    ? "bg-[#244C3B] text-white shadow-sm"
+                    : "text-[#606860] hover:text-[#244C3B]"
                 }`}
               >
                 {cat}
@@ -50,48 +52,60 @@ export default function FeaturedProjects() {
         </div>
 
         {/* Project Cards Grid */}
-        <div className="space-y-12">
+        <div className="space-y-16">
           {filteredProjects.map((project) => (
             <div
               key={project.slug}
-              className="rounded-3xl border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40 overflow-hidden shadow-sm hover:shadow-xl hover:border-indigo-500/30 transition-all duration-300"
+              className="rounded-3xl border border-[#DFD7C2] bg-white overflow-hidden shadow-md hover:shadow-xl hover:border-[#244C3B]/50 transition-all duration-300"
             >
+              {/* Editorial Project Header Visual */}
+              <div className="relative h-60 sm:h-72 lg:h-80 w-full overflow-hidden border-b border-[#E8E2D2]">
+                <Image
+                  src={project.coverImage}
+                  alt={`${project.title} - ${project.tagline}`}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 1200px"
+                  className="object-cover hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#244C3B]/90 via-[#244C3B]/30 to-transparent" />
+                
+                <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-end justify-between gap-4 text-white">
+                  <div>
+                    <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#F1EBDD] text-[#244C3B] border border-[#DFD7C2] inline-block mb-2">
+                      {project.category}
+                    </span>
+                    <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight">
+                      {project.title}
+                    </h3>
+                  </div>
+                  <span className="text-xs text-[#C5A15B] font-mono tracking-wider bg-[#244C3B]/80 px-3 py-1.5 rounded-lg border border-[#C5A15B]/30">
+                    Case Study & Architecture
+                  </span>
+                </div>
+              </div>
+
               <div className="p-8 sm:p-10 lg:p-12">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                   
                   {/* Left Column: Details */}
                   <div className="lg:col-span-7 space-y-6">
-                    <div className="flex flex-wrap items-center gap-3">
-                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-500 border border-indigo-500/20">
-                        {project.category}
-                      </span>
-                      <span className="text-xs text-slate-500 dark:text-slate-400">
-                        Case Study Available
-                      </span>
-                    </div>
+                    <p className="text-base sm:text-lg text-[#244C3B] font-serif font-medium">
+                      {project.tagline}
+                    </p>
 
-                    <div>
-                      <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
-                        {project.title}
-                      </h3>
-                      <p className="text-sm sm:text-base font-medium text-indigo-600 dark:text-indigo-400 mt-1">
-                        {project.tagline}
-                      </p>
-                    </div>
-
-                    <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <p className="text-sm sm:text-base text-[#606860] leading-relaxed">
                       {project.description}
                     </p>
 
                     {/* Key Features List */}
-                    <div className="space-y-2">
-                      <p className="text-xs font-semibold text-slate-900 dark:text-slate-200 uppercase tracking-wider">
+                    <div className="space-y-2.5">
+                      <p className="text-xs font-bold text-[#244C3B] uppercase tracking-wider">
                         Key Capabilities:
                       </p>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-[#292D29]">
                         {project.keyFeatures.slice(0, 4).map((feat, fIdx) => (
                           <div key={fIdx} className="flex items-start gap-2">
-                            <CheckCircle className="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" />
+                            <CheckCircle className="w-4 h-4 text-[#244C3B] mt-0.5 shrink-0" />
                             <span>{feat}</span>
                           </div>
                         ))}
@@ -100,11 +114,11 @@ export default function FeaturedProjects() {
 
                     {/* Technology Badges */}
                     <div className="pt-2">
-                      <div className="flex flex-wrap gap-1.5">
+                      <div className="flex flex-wrap gap-2">
                         {project.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className="px-2.5 py-1 text-xs font-mono rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60"
+                            className="px-3 py-1 text-xs font-mono rounded-lg bg-[#FAF8F2] text-[#244C3B] font-medium border border-[#DFD7C2]"
                           >
                             {tech}
                           </span>
@@ -113,13 +127,13 @@ export default function FeaturedProjects() {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-100 dark:border-slate-800/80">
+                    <div className="flex flex-wrap items-center gap-3.5 pt-4 border-t border-[#E8E2D2]">
                       <Link
                         href={`/projects/${project.slug}`}
-                        className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold shadow-md shadow-indigo-600/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#244C3B] hover:bg-[#1c3d2f] text-white text-sm font-semibold shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98]"
                       >
                         View Full Case Study
-                        <ArrowUpRight className="w-4 h-4" />
+                        <ArrowUpRight className="w-4 h-4 text-[#C5A15B]" />
                       </Link>
 
                       {project.isLive && project.liveDemoUrl ? (
@@ -127,15 +141,15 @@ export default function FeaturedProjects() {
                           href={project.liveDemoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-medium transition-colors"
+                          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-[#DFD7C2] hover:bg-[#F1EBDD] text-[#244C3B] text-sm font-medium transition-colors"
                         >
-                          <ExternalLink className="w-4 h-4 text-indigo-400" />
+                          <ExternalLink className="w-4 h-4 text-[#C46B4F]" />
                           Live Demo
                         </a>
                       ) : (
-                        <span className="inline-flex items-center gap-1.5 px-3 py-2 text-xs text-slate-500 font-medium">
-                          <span className="w-2 h-2 rounded-full bg-slate-400"></span>
-                          Source Code Available
+                        <span className="inline-flex items-center gap-2 px-3.5 py-2 text-xs text-[#606860] font-medium bg-[#F1EBDD] rounded-xl border border-[#DFD7C2]">
+                          <span className="w-2 h-2 rounded-full bg-[#C5A15B]"></span>
+                          Verified Source Code Available
                         </span>
                       )}
 
@@ -143,7 +157,7 @@ export default function FeaturedProjects() {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-medium transition-colors"
+                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[#DFD7C2] hover:bg-[#F1EBDD] text-[#244C3B] text-sm font-semibold transition-colors"
                       >
                         <GithubIcon className="w-4 h-4" />
                         GitHub Repository
@@ -153,32 +167,32 @@ export default function FeaturedProjects() {
 
                   {/* Right Column: Architectural Schematic Card */}
                   <div className="lg:col-span-5 w-full">
-                    <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/80 p-6 space-y-4">
-                      <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
-                        <span className="text-xs font-mono text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-                          <Layers className="w-4 h-4 text-indigo-400" />
+                    <div className="rounded-2xl border border-[#DFD7C2] bg-[#FAF8F2] p-6 space-y-4">
+                      <div className="flex items-center justify-between pb-3 border-b border-[#E8E2D2]">
+                        <span className="text-xs font-mono text-[#244C3B] font-bold flex items-center gap-2">
+                          <Layers className="w-4 h-4 text-[#C46B4F]" />
                           Architecture Overview
                         </span>
-                        <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                        <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-[#244C3B]/10 text-[#244C3B] border border-[#244C3B]/20">
                           Production Ready
                         </span>
                       </div>
 
-                      <div className="space-y-3 font-mono text-xs text-slate-700 dark:text-slate-300">
+                      <div className="space-y-3 font-mono text-xs text-[#292D29]">
                         {project.architecture ? (
                           project.architecture.map((layer, lIdx) => (
                             <div
                               key={lIdx}
-                              className="p-3 rounded-lg border border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/60"
+                              className="p-3.5 rounded-xl border border-[#DFD7C2] bg-white shadow-sm"
                             >
-                              <div className="text-[10px] text-indigo-500 font-semibold mb-1">
-                                LAYER {lIdx + 1}
+                              <div className="text-[10px] text-[#C46B4F] font-bold tracking-wider mb-1">
+                                LAYER 0{lIdx + 1}
                               </div>
-                              <div className="leading-snug">{layer}</div>
+                              <div className="leading-snug text-[#292D29]">{layer}</div>
                             </div>
                           ))
                         ) : (
-                          <div className="p-4 rounded-lg bg-slate-100 dark:bg-slate-900 text-slate-500">
+                          <div className="p-4 rounded-xl bg-white text-[#606860]">
                             Modular Architecture
                           </div>
                         )}
@@ -187,7 +201,7 @@ export default function FeaturedProjects() {
                       <div className="pt-2 text-right">
                         <Link
                           href={`/projects/${project.slug}`}
-                          className="text-xs font-medium text-indigo-600 dark:text-indigo-400 hover:underline inline-flex items-center gap-1"
+                          className="text-xs font-semibold text-[#244C3B] hover:text-[#C46B4F] inline-flex items-center gap-1 transition-colors"
                         >
                           Read architecture details &rarr;
                         </Link>
