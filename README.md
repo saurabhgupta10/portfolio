@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Saurabh Gupta - Full-Stack Web Developer Portfolio
 
-## Getting Started
+A modern, high-performance, responsive portfolio website built with **Next.js (App Router)**, **React**, **TypeScript**, and **Tailwind CSS**.
 
-First, run the development server:
+---
+
+## 🌟 Key Features
+
+- **Hero & Value Proposition**: High-impact introduction tailored for international freelancing clients.
+- **Categorized Skills Matrix**: Clear breakdown across Frontend, Backend, Database, and DevOps tools.
+- **Detailed Project Showcases**:
+  - **WedSend**: Wedding & Event Guest Management Platform (Next.js, Fastify, Supabase, WhatsApp Cloud API).
+  - **Autonomous AI Lead Engine**: AI-Powered Lead Generation & Enrichment Engine (Python, FastAPI, Google Gemini, Google Sheets CRM).
+- **Dedicated Project Case Study Pages**: Comprehensive problem, solution, architecture, and feature breakdowns for each project with dynamic SSG routes (`/projects/[slug]`).
+- **Services & Offerings**: 8 distinct, client-oriented service cards detailing scope and deliverables.
+- **Why Work With Me**: Professional credibility points focused on clean code, responsiveness, and clear communication.
+- **Functional Contact Form & Direct Links**: Ready-to-send project inquiry form with pre-formatted email fallbacks.
+- **Light/Dark Mode**: Seamless theme toggle with persistent styling.
+- **SEO & Social Optimization**: Open Graph tags, semantic metadata, dynamic `sitemap.xml`, and `robots.txt`.
+
+---
+
+## 🛠️ Technology Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **Library**: React 19
+- **Language**: TypeScript 5
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React & Custom SVG Vector Icons
+- **Deployment**: Vercel Free Hobby Plan
+
+---
+
+## 🚀 Running Locally
 
 ```bash
+# 1. Install dependencies
+npm install
+
+# 2. Run local development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# 3. Open in browser
+http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📦 Production Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+The application is completely pre-rendered statically with Next.js SSG for optimal performance and zero hosting costs.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🌐 Deploy to Vercel (100% Free)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Option 1: Automatic GitHub Import (Recommended)
 
-## Deploy on Vercel
+1. Create a new repository on your GitHub account: `https://github.com/new` named `portfolio`.
+2. Push this local repository to GitHub:
+   ```bash
+   git remote add origin https://github.com/Saurabhgupta10/portfolio.git
+   git branch -M main
+   git push -u origin main
+   ```
+3. Visit [vercel.com](https://vercel.com) and click **"Add New..." > "Project"**.
+4. Select the `portfolio` repository from your GitHub account.
+5. Keep default settings and click **Deploy**. Vercel will deploy it in under 60 seconds with a free `.vercel.app` subdomain!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Option 2: Deploy via Vercel CLI
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npx vercel login
+npx vercel --prod
+```
+
+---
+
+## 🔄 Adding New Projects
+
+All projects are managed centrally in `src/data/portfolioData.ts`.
+
+To add a new project:
+1. Open `src/data/portfolioData.ts`.
+2. Add your project object to the `PROJECTS` array:
+   ```ts
+   {
+     slug: "your-project-slug",
+     title: "Project Name",
+     tagline: "Short tagline",
+     category: "Full-Stack",
+     description: "Summary...",
+     technologies: ["Next.js", "PostgreSQL", ...],
+     keyFeatures: [...],
+     problem: "Problem description...",
+     solution: "Solution description...",
+     challenges: "Challenges overcome...",
+     githubUrl: "https://github.com/...",
+     isLive: true,
+     liveDemoUrl: "https://...",
+     featured: true,
+     accentColor: "from-blue-500/20 to-indigo-500/20"
+   }
+   ```
+3. The home page and the `/projects/[slug]` case study page will update automatically!
