@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #f8fafc;
+    --text-main: #0f172a;
+    --card-bg: rgba(255, 255, 255, 0.8);
+    --border-subtle: #e2e8f0;
+  }
+
+  .dark {
+    --bg-main: #020617;
+    --text-main: #f8fafc;
+    --card-bg: rgba(15, 23, 42, 0.7);
+    --border-subtle: #1e293b;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}

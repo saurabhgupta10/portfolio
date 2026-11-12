@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://saurabh-gupta-portfolio.vercel.app/sitemap.xml
